@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "naavcaptured-portal",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": { "enabled": true },
+  // Non-secret config. Secrets (keys, tokens) are set with `wrangler secret put`.
+  "vars": {
+    "NEXT_PUBLIC_APP_URL": "https://portal.naavcaptured.com"
+  }
+  // Custom domain: add after the zone is on Cloudflare
+  // "routes": [{ "pattern": "portal.naavcaptured.com", "custom_domain": true }]
+}

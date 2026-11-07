@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+/*
+ * naavcaptured brand tokens (from the brand kit's tokens.json).
+ * Bone theme by default; the Ink theme swaps bone <-> ink.
+ * Never hard-code hex values in components: use these tokens.
+ */
+:root {
+  --nc-bone: #efeeea;
+  --nc-surface: #ffffff;
+  --nc-ink: #1c1c1c;
+  --nc-on-ink: #efeeea;
+  --nc-stone: #d9d6cf;
+  --nc-ash: #6b6862;
+  --nc-sage: #4e6a4b;
+  --nc-amber: #805810;
+  --nc-rust: #a3412f;
+  --nc-status-tint: #e4e2dc;
+  --nc-focus-ring: 0 0 0 2px #efeeea, 0 0 0 4px #1c1c1c;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --nc-bone: #1c1c1c;
+    --nc-surface: #262626;
+    --nc-ink: #efeeea;
+    --nc-on-ink: #1c1c1c;
+    --nc-stone: #3a3936;
+    --nc-ash: #a8a59e;
+    --nc-sage: #9dbb98;
+    --nc-amber: #d9a94e;
+    --nc-rust: #e07a66;
+    --nc-status-tint: #2e2d2b;
+    --nc-focus-ring: 0 0 0 2px #1c1c1c, 0 0 0 4px #efeeea;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --nc-bone: #1c1c1c;
+  --nc-surface: #262626;
+  --nc-ink: #efeeea;
+  --nc-on-ink: #1c1c1c;
+  --nc-stone: #3a3936;
+  --nc-ash: #a8a59e;
+  --nc-sage: #9dbb98;
+  --nc-amber: #d9a94e;
+  --nc-rust: #e07a66;
+  --nc-status-tint: #2e2d2b;
+  --nc-focus-ring: 0 0 0 2px #1c1c1c, 0 0 0 4px #efeeea;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bone: var(--nc-bone);
+  --color-surface: var(--nc-surface);
+  --color-ink: var(--nc-ink);
+  --color-on-ink: var(--nc-on-ink);
+  --color-stone: var(--nc-stone);
+  --color-ash: var(--nc-ash);
+  --color-sage: var(--nc-sage);
+  --color-amber: var(--nc-amber);
+  --color-rust: var(--nc-rust);
+  --color-status-tint: var(--nc-status-tint);
+
+  --font-serif: "Times New Roman", "Times New Roman MT", Tinos, Times, serif;
+  --font-sans: "Nunito Sans", system-ui, -apple-system, sans-serif;
+
+  --radius-media: 4px;
+  --radius-card: 12px;
+  --radius-pill: 999px;
+
+  --shadow-focus: var(--nc-focus-ring);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--nc-bone);
+    color: var(--nc-ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 24px;
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid transparent;
+    box-shadow: var(--nc-focus-ring);
+  }
+  ::selection {
+    background: var(--nc-ink);
+    color: var(--nc-on-ink);
+  }
+}
+
+@layer components {
+  /* Headings: lowercase, heavy, tightly tracked, like the wordmark. */
+  .nc-h1 {
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-transform: lowercase;
+  }
+  .nc-h2 {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-transform: lowercase;
+  }
+  .nc-display {
+    font-size: clamp(40px, 9vw, 56px);
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    text-transform: lowercase;
+  }
+  .nc-accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .nc-label {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .nc-meta {
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--nc-ash);
+  }
+}
